@@ -33,11 +33,7 @@ export async function activate(context: ExtensionContext) {
     ],
   }
 
-  client = new LanguageClient(
-    'languageServerExample',
-    serverOptions,
-    clientOptions
-  )
+  client = new LanguageClient('sqls', serverOptions, clientOptions)
   client.start()
 }
 
