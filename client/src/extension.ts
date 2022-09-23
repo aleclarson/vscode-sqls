@@ -4,19 +4,23 @@
  * ------------------------------------------------------------------------------------------ */
 
 import { ExtensionContext } from 'vscode'
-
 import {
   LanguageClient,
   LanguageClientOptions,
   ServerOptions,
 } from 'vscode-languageclient'
-
 import vscode = require('vscode')
+import * as util from 'util'
 
 let client: LanguageClient
+let output: vscode.OutputChannel
 
 export function activate(context: ExtensionContext) {
+  output = vscode.window.createOutputChannel('sqls')
+
   const config = parseLanguageServerConfig()
+  output.appendLine(util.inspect(config))
+
   let serverOptions: ServerOptions = {
     command: 'sqls',
     args: [...config.flags],
