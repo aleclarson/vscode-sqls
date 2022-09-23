@@ -4,18 +4,22 @@ importers:
 
   .:
     specifiers:
+      '@alloc/prettier-config': ^1.0.0
       '@types/mocha': ^5.2.7
       '@types/node': ^12.12.0
       '@typescript-eslint/parser': ^2.3.0
       eslint: ^6.4.0
       mocha: ^6.2.2
+      prettier: ^2.7.1
       typescript: ^3.8.3
     devDependencies:
+      '@alloc/prettier-config': 1.0.0
       '@types/mocha': 5.2.7
       '@types/node': 12.12.35
       '@typescript-eslint/parser': 2.25.0_iwkzlu3vpwyuqauicvd7a6boju
       eslint: 6.8.0
       mocha: 6.2.3
+      prettier: 2.7.1
       typescript: 3.8.3
 
   client:
@@ -30,6 +34,10 @@ importers:
       vscode-test: 1.6.1
 
 packages:
+
+  /@alloc/prettier-config/1.0.0:
+    resolution: {integrity: sha512-xm50V1qxSdTh1O1fKA+gqcU605YSnxfq6HwtYSFU3fRsKMFnUSuSOxqSAPI7y2sRxqPed2EIuGmNn107LVQM6g==}
+    dev: true
 
   /@babel/code-frame/7.0.0:
     resolution: {integrity: sha512-OfC2uemaknXr87bdLUkWog7nYuliM9Ij5HUcajsVcMCpQrcLmtxRbVFTIqmcSkSeYRBFBRxs2FiUqFJDLdiebA==}
@@ -1097,6 +1105,12 @@ packages:
   /prelude-ls/1.1.2:
     resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /process-nextick-args/2.0.1:
