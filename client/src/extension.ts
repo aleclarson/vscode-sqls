@@ -11,14 +11,15 @@ import {
 } from 'vscode-languageclient'
 import vscode = require('vscode')
 import * as util from 'util'
+import * as path from 'path'
 
 let client: LanguageClient
 let output: vscode.OutputChannel
 
-export function activate(context: ExtensionContext) {
+export async function activate(context: ExtensionContext) {
   output = vscode.window.createOutputChannel('sqls')
 
-  const config = parseLanguageServerConfig()
+  const config = await parseLanguageServerConfig()
   output.appendLine(util.inspect(config))
 
   let serverOptions: ServerOptions = {
@@ -51,10 +52,18 @@ interface LanguageServerConfig {
   flags: string[]
 }
 
-export function parseLanguageServerConfig(): LanguageServerConfig {
+export async function parseLanguageServerConfig(): Promise<LanguageServerConfig> {
   const sqlsConfig = getSqlsConfig()
   const config = {
     flags: sqlsConfig['languageServerFlags'] || [],
+  }
+  const configFlagIdx = config.flags.indexOf('-config') + 1
+  if (configFlagIdx) {
+    const configPath = config.flags[configFlagIdx]
+    if (configPath && !path.isAbsolute(configPath)) {
+      const [configFileUri] = await vscode.workspace.findFiles(configPath)
+      config.flags[configFlagIdx] = configFileUri.fsPath
+    }
   }
   return config
 }
